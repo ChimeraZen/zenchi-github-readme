@@ -1,12 +1,11 @@
-# ZenChi Apps
+# ZenChi GitHub Readme
   
-**Description**:  ZenChi Apps is a growing collection of reuseable React components that have been
-                  built with user-accessibilty in mind to provide the best experience across all platforms
+**Description**:  The ZenChi GitHub Readme component uses a raw file of GitHub markdown and recreates a facsimile of how GitHub displays markdown
 
-**Version**:      [0.1.2](#v012)  
+**Version**:      [0.1.1](#v011)  
 **Author**:       Elijah Liedtke (Chimera.Zen)  
 **Email**:        [chimera.zen@gmail.com](mailto:chimera.zen@gmail.com)  
-**Link**:         https://github.com/ChimeraZen/zenchiapps
+**Link**:         https://github.com/ChimeraZen/zenchi-github-readme
 
 **Copyright**:    Copyright (c) 2018, Elijah Liedtke  
 **License**:      http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
@@ -31,45 +30,63 @@ I hope you enjoy this app!
 ### Installation
 1. Navigate to your app directory and install the ZenChi Apps package using:
 ```
-npm i zenchiapps
+npm i zenchi-github-readme
 ```
 2. Once installed, ZenChi components can be imported using this syntax and replacing `component_name` with the required component:
 ```
-import component_name from 'zenchiapps'
-
-Example: import Progress from 'zenchiapps'
+import <GitHubReadme file={raw_github_file_as_string} /> from 'github-readme'
 ```
 &nbsp;
 ### Updating
 1. Navigate to your app directory and enter:
 ```
-npm update zenchiapps
+npm update zenchi-github-readme
 ```
 &nbsp;
 ### Uninstall
 1. Navigate to your app directory and enter:
 ```
-npm uninstall zenchiapps
+npm uninstall zenchi-github-readme
 ```
 
 &nbsp;
 ## Components
 
 ### Progress
-The ZenChi Progress component uses React v16.6 and the HTML5 canvas element to draw a radial or linear progress bar that uses the requestAnimationFrame API to ensure a consistent display across platforms.
+The ZenChi GitHub Readme component uses a raw file of GitHub markdown and recreates a facsimile of how GitHub displays markdown. The file can be an import or fetched from the raw URL provided by GitHub
 
-This component can be initialized using `import Progress from 'zenchiapps'`
+This component can be initialized using `import GitHubReadme from 'zenchi-github-readme'`
 
 ```
-<Progress 
-  title="Example" 
-  withBorder
-  max={100} 
-  percentage={80} 
-  speed={2} 
-  type='radial'
-  lineCap='round'
-/>
+import React, { Component } from 'react'
+
+import GitHubReadme from './lib/zenchi-github-readme'
+
+import './App.css'
+
+export default class App extends Component {
+  componentDidMount() {
+    const readMe = 'https://raw.githubusercontent.com/ChimeraZen/zenchi-videoplayer/master/README.md'
+    
+    fetch(readMe)
+      .then(res => res.text()) // Convert file to string
+      .then(md => {
+        this.setState({ md })  // Set string to state to be passed to <GitHubReadme /> as file prop
+      })
+  }
+  
+  render() {
+    return this.state !== null 
+      ? <div className="App">
+          <header>
+            <h1>ZenChi GitHub Readme</h1>
+          </header>
+        
+          <GitHubReadme file={this.state.md} />
+        </div>
+      : <div>Loading Component...</div>
+  }
+}
 ```
 
 
@@ -77,15 +94,16 @@ This component can be initialized using `import Progress from 'zenchiapps'`
 
 Name        |Type     |Default|Syntax                                      |Description
 ------------|---------|-------|--------------------------------------------|-------------------------------
-title       |string   |false  |string \| false                             |Default is false if no title prop is present
-type        |string   |radial |'radial \| bar'                             |Type
-max         |number   |100    |                                            |Default max is 100
-percentage  |number   |75     |                                            |Default percentage is 75
-speed       |number   |1.25   |                                            |Rate of progress increase between requested animation frames
-withBorder  |boolean  |false  |true \| false                               |**True** if included as component prop, otherwise default is **false**
+file        |string   |       |                                            |File can be imported or fetched from raw readme URL on GitHub
 
 
 &nbsp;
 ## ChangeLog
+### v0.1.1
+* Parses raw GitHub Readme file as string and outputs a facsimile of how GitHub displays readme.md files
+* Some issues with parsing task lists, etc. and some styling isn't quite right
+
+
+
 ### v0.1.0
 * Initial Commit and NPM package test
