@@ -68,7 +68,7 @@ This component can be initialized using `import GitHubReadme from 'zenchi-github
       })
   }
         
-  <GitHubReadme file={this.state.md} />
+  &lt;GitHubReadme file={this.state.md} /&gt;
 ```
 
 
