@@ -58,35 +58,17 @@ The ZenChi GitHub Readme component uses a raw file of GitHub markdown and recrea
 This component can be initialized using `import GitHubReadme from 'zenchi-github-readme'`
 
 ```
-import React, { Component } from 'react'
-
-import GitHubReadme from './lib/zenchi-github-readme'
-
-import './App.css'
-
-export default class App extends Component {
   componentDidMount() {
-    const readMe = 'https://raw.githubusercontent.com/ChimeraZen/zenchi-videoplayer/master/README.md'
+    const readMe = 'https://raw.githubusercontent.com/ChimeraZen/zenchi-github-readme/master/README.md'
     
     fetch(readMe)
       .then(res => res.text()) // Convert file to string
       .then(md => {
-        this.setState({ md })  // Set string to state to be passed to <GitHubReadme /> as file prop
+        this.setState({ md })  // Set string to state to be passed to &lt;GitHubReadme /&gt; as file prop
       })
   }
-  
-  render() {
-    return this.state !== null 
-      ? <div className="App">
-          <header>
-            <h1>ZenChi GitHub Readme</h1>
-          </header>
         
-          <GitHubReadme file={this.state.md} />
-        </div>
-      : <div>Loading Component...</div>
-  }
-}
+  <GitHubReadme file={this.state.md} />
 ```
 
 
