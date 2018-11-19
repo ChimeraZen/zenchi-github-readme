@@ -34,7 +34,7 @@ npm i zenchi-github-readme
 ```
 2. Once installed, ZenChi components can be imported using this syntax:
 ```
-import <GitHubReadme file={raw-github-file-as-string} /> from 'github-readme'
+import { GitHubReadme } from 'github-readme'
 ```
 &nbsp;
 ### Updating
