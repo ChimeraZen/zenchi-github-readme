@@ -28,13 +28,13 @@ I hope you enjoy this app!
 
 &nbsp;
 ### Installation
-1. Navigate to your app directory and install the ZenChi Apps package using:
+1. Navigate to your app directory and install the ZenChi GitHub Readme package using:
 ```
 npm i zenchi-github-readme
 ```
-2. Once installed, ZenChi components can be imported using this syntax and replacing `component_name` with the required component:
+2. Once installed, ZenChi components can be imported using this syntax:
 ```
-import <GitHubReadme file={raw_github_file_as_string} /> from 'github-readme'
+import <GitHubReadme file={raw-github-file-as-string} /> from 'github-readme'
 ```
 &nbsp;
 ### Updating
@@ -57,18 +57,8 @@ The ZenChi GitHub Readme component uses a raw file of GitHub markdown and recrea
 
 This component can be initialized using `import GitHubReadme from 'zenchi-github-readme'`
 
-```
-componentDidMount() {  
-  const readMe = 'https://raw.githubusercontent.com/ChimeraZen/zenchi-github-readme/master/README.md'  
-  
-  fetch(readMe)  
-    .then(res => res.text()) // Convert file to string  
-    .then(md => {  
-      this.setState({ md })  // Set string to state to be passed to &lt;GitHubReadme /&gt; as file prop  
-    })  
-}  
-  
-&lt;GitHubReadme file={this.state.md} /&gt;
+```  
+<GitHubReadme file={this.state.md} />
 ```
 
 
