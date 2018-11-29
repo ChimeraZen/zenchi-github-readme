@@ -55,10 +55,10 @@ npm uninstall zenchi-github-readme
 ### Progress
 The ZenChi GitHub Readme component uses a raw file of GitHub markdown and recreates a facsimile of how GitHub displays markdown. The file can be an import or fetched from the raw URL provided by GitHub
 
-This component can be initialized using `import GitHubReadme from 'zenchi-github-readme'`
+This component can be initialized using `import { GitHubReadme } from 'zenchi-github-readme'`
 
 ```  
-<GitHubReadme file={this.state.md} />
+<GitHubReadme file={raw-github-readme-file-as-string} />
 ```
 
 
